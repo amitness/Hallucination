@@ -1,4 +1,26 @@
-# Object Hallucination in Image Captioning
+# Eval Code for CHAIRs & CHAIRi Metrics in Image Captioning
+
+This repository is a fork from [Lisa's Original Repo](https://github.com/LisaAnne/Hallucination), with the following main modifications:
+
+- Transfer python2 code to python3 code.
+- Add a `eval_results.py` script to eval `CHAIRs` and `CHAIRi` for your own generated sentences of CoCo Caption dataset.
+
+## Running the Code
+
+**Getting Started**
+
+Run [setup.sh](setup.sh) to download generated sentences used for our analysis.
+Additionally you will need MSCOCO annotations (both the instance segmentations and ground truth captions).
+If you do not already have them, they can be downloaded [here](http://images.cocodataset.org/annotations/annotations_trainval2014.zip).
+You can see other python requirements in [requirements.txt](requirements.txt).
+
+**NOTE:** The download links in `setup.sh` are [no longer available](https://github.com/LisaAnne/Hallucination/issues/1), you need to download it from [Lisa's Google Drive](https://drive.google.com/drive/u/1/folders/1dnci1Kv6ez-hsFOqZt_gwiAv2FTAjDP4).
+
+---
+
+Here is the original README content from the original repo.
+
+## Object Hallucination in Image Captioning
 
 Rohrbach*, Anna and Hendricks*, Lisa Anne, et al. "Object Hallucination in Image Captioning." EMNLP (2018).
 
