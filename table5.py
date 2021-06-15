@@ -14,12 +14,12 @@ def correctForNan(inputVec):
   item = inputVec[0]
   allEqual = True
   for it in inputVec:
-    if it <> item:
+    if it != item:
       allEqual = False
       break
 
   if allEqual:
-    outputVec[np.random.choice(range(len(inputVec)))] += 0.001
+    outputVec[np.random.choice(list(range(len(inputVec))))] += 0.001
 
   return outputVec
 ##########################################################################
@@ -114,14 +114,14 @@ for im in range(NIMAGES):
     corr = np.corrcoef(correctForNan([x[metric] + c_m[i][1] for i, x in enumerate(s_m)]), correctForNan([x[0] for x in h_s_m]))[0][1]
     corr_s_ci_s[metric] += corr
 
-print "Metric\tCorrelation"
+print("Metric\tCorrelation")
 
 for metric in [5,6,7]: # focus on 'M', 'C', 'S'
-  print('%s\t%.04f' % (SCORES[metric], corr_s_s[metric]/float(NIMAGES)))
+  print(('%s\t%.04f' % (SCORES[metric], corr_s_s[metric]/float(NIMAGES))))
 
 for metric in [5,6,7]: # focus on 'M', 'C', 'S'
-  print('%s\t%.04f' % (SCORES[metric]+'+'+CHAIR[0], corr_s_cs_s[metric]/float(NIMAGES)))
+  print(('%s\t%.04f' % (SCORES[metric]+'+'+CHAIR[0], corr_s_cs_s[metric]/float(NIMAGES))))
 
 for metric in [5,6,7]: # focus on 'M', 'C', 'S'
-  print('%s\t%.04f' % (SCORES[metric]+'+'+CHAIR[1], corr_s_ci_s[metric]/float(NIMAGES)))
+  print(('%s\t%.04f' % (SCORES[metric]+'+'+CHAIR[1], corr_s_ci_s[metric]/float(NIMAGES))))
 

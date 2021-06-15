@@ -19,7 +19,7 @@ _, imids, _ = chair.load_generated_captions(sentence_template %table4_tags[0][1]
 evaluator = chair.CHAIR(imids, args.annotation_path)
 evaluator.get_annotations()
 
-print "Model\tCIDEr\tMETEOR\tSPICE"
+print("Model\tCIDEr\tMETEOR\tSPICE")
 
 for tag in table4_tags:
 
@@ -29,4 +29,4 @@ for tag in table4_tags:
         
     cider, meteor, spice = misc.score_correlation(output_template %tag[1],
                                                   quiet=True)
-    print "%s\t%0.03f\t%0.03f\t%0.03f" %(tag[0], cider, meteor, spice)
+    print("%s\t%0.03f\t%0.03f\t%0.03f" %(tag[0], cider, meteor, spice))

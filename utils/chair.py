@@ -4,7 +4,7 @@ import nltk
 import json
 from pattern.en import singularize
 import argparse
-from misc import *
+from .misc import *
 
 lemma = nltk.wordnet.WordNetLemmatizer()
 
@@ -154,7 +154,7 @@ class CHAIR(object):
             if imid in self.imid_to_objects:
                 node_word = self.inverse_synonym_dict[id_to_name[annotation['category_id']]]
                 self.imid_to_objects[imid].append(node_word)
-        print "\n"
+        print("\n")
         for imid in self.imid_to_objects:
             self.imid_to_objects[imid] = set(self.imid_to_objects[imid])
 
@@ -173,7 +173,7 @@ class CHAIR(object):
             if imid in self.imid_to_objects:
                 _, node_words, _, _ = self.caption_to_words(annotation['caption'])
                 self.imid_to_objects[imid].update(node_words)
-        print "\n"
+        print("\n")
 
         for imid in self.imid_to_objects:
             self.imid_to_objects[imid] = set(self.imid_to_objects[imid])
@@ -277,7 +277,7 @@ def load_generated_captions(cap_file):
    caps = json.load(open(cap_file))
    try:
        metrics = caps['overall']
-       caps = caps['imgToEval'].values()
+       caps = list(caps['imgToEval'].values())
        imids = set([cap['image_id'] for cap in caps])
    except:
        raise Exception("Expect caption file to consist of a dectionary with sentences correspdonding to the key 'imgToEval'")
@@ -299,8 +299,8 @@ def print_metrics(hallucination_cap_dict, quiet=False):
                                                   sentence_metrics['CHAIRi']*100)
 
     if not quiet:
-        print "SPICE\tMETEOR\tCIDEr\tCHAIRs\tCHAIRi"
-        print metric_string
+        print("SPICE\tMETEOR\tCIDEr\tCHAIRs\tCHAIRi")
+        print(metric_string)
 
     else:
         return metric_string

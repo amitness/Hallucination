@@ -14,8 +14,8 @@ figure4_tags_karpathy = [('TD', 'td_beam1_test'),
                ('Single', 'td-single_beam1_test'),
                ('FC', 'td-fc_beam1_test')] 
 
-print "=================Karpathy Split================="
-print "Model\tCHAIRi\tLM Consistency\tIM Consistency"
+print("=================Karpathy Split=================")
+print("Model\tCHAIRi\tLM Consistency\tIM Consistency")
 
 for tag in figure4_tags_karpathy:
 
@@ -23,13 +23,13 @@ for tag in figure4_tags_karpathy:
                                                                   args.annotation_path, 
                                                                   robust=False)
     
-    print "%s\t%0.04f\t%0.04f\t\t%0.04f" %(tag[0], 
+    print("%s\t%0.04f\t%0.04f\t\t%0.04f" %(tag[0], 
                                          chair_i, 
                                          lm_consistency,
-                                         im_consistency)
+                                         im_consistency))
 
-print "=================Robust Split================="
-print "Model\tCHAIRi\tLM Consistency\tIM Consistency"
+print("=================Robust Split=================")
+print("Model\tCHAIRi\tLM Consistency\tIM Consistency")
 
 figure4_tags_robust = [('TD', 'td-robust_beam1_test'),
                        ('No Att', 'td-noatt-robust_beam1_test'),
@@ -56,7 +56,7 @@ for tag in figure4_tags_robust:
                                                                   args.annotation_path, 
                                                                   robust=True)
     
-    print "%s\t%0.04f\t%0.04f\t\t%0.04f" %(tag[0], 
+    print("%s\t%0.04f\t%0.04f\t\t%0.04f" %(tag[0], 
                                          chair_i, 
                                          lm_consistency,
-                                         im_consistency)
+                                         im_consistency))

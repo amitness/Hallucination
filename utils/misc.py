@@ -2,9 +2,9 @@ import os
 import sys
 import json
 import numpy as np
-import lm_consistency as LM
-import im_consistency as IM
-from chair import *
+from . import lm_consistency as LM
+from . import im_consistency as IM
+from .chair import *
 
 def hallucination_file_to_dict(hallucinated_json):
 
@@ -24,7 +24,7 @@ def get_consistency(tag, annotation_path, robust=False):
     sentences = 'generated_sentences/%s.json' %tag
 
     if not os.path.exists(hallucinated_json):
-        print "Computing hallucination file for tag %s" %tag
+        print("Computing hallucination file for tag %s" %tag)
         sentence_template = 'generated_sentences/%s.json'
         _, imids, _ = load_generated_captions(sentence_template %tag)
         evaluator = CHAIR(imids, annotation_path)
@@ -80,9 +80,9 @@ def score_correlation(cap_file, quiet=False):
     spice_corr = np.corrcoef(spices, hallucinations)[1][0]
 
     if not quiet:
-        print "CIDEr and hallucination: %0.03f" %cider_corr
-        print "METEOR and hallucination: %0.03f" %meteor_corr
-        print "SPICE and hallucination: %0.03f" %spice_corr
+        print("CIDEr and hallucination: %0.03f" %cider_corr)
+        print("METEOR and hallucination: %0.03f" %meteor_corr)
+        print("SPICE and hallucination: %0.03f" %spice_corr)
 
     return cider_corr, meteor_corr, spice_corr
 

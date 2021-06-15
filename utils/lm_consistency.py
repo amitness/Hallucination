@@ -9,14 +9,14 @@ from pattern.en import singularize
 import pdb
 import sys
 import argparse
-from misc import *
+from .misc import *
 
 def read_vocab(robust):
 
     #read vocab
     vocab = pkl.load(open('data/vocab.p', 'rb'))
     word_to_idx = defaultdict(lambda: unk_idx)  # word -> ix
-    for key, value in zip(vocab.keys(), vocab.values()):
+    for key, value in zip(list(vocab.keys()), list(vocab.values())):
         word_to_idx[value] = int(key)
 
     return word_to_idx
@@ -39,14 +39,14 @@ def get_lm_consistency(hallucination_by_imid,
     
     for i, imid in enumerate(sorted(hallucination_by_imid.keys())):
         if not quiet:
-            sys.stdout.write("\r%d/%d" %(i, len(hallucination_by_imid.keys())))
+            sys.stdout.write("\r%d/%d" %(i, len(list(hallucination_by_imid.keys()))))
         probs = np.load(blank_lm_predictions %int(imid))
         item = hallucination_by_imid[imid]
         caption = item['caption'] 
     
         caption_words = word_tokenize(caption.lower())
-        mscoco_words = zip(item['hallucination_idxs'], \
-                           [caption_words[i] for i in item['hallucination_idxs']])
+        mscoco_words = list(zip(item['hallucination_idxs'], \
+                           [caption_words[i] for i in item['hallucination_idxs']]))
     
         for mscoco_word in mscoco_words:
             idx, word = mscoco_word
@@ -75,4 +75,4 @@ if __name__ == '__main__':
     consistency = get_lm_consistency(hallucination_by_imid, \
                                      blank_lm_predictions, \
                                      word_to_idx)
-    print "\nConsistency: %0.04f" %consistency
+    print("\nConsistency: %0.04f" %consistency)

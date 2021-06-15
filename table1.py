@@ -19,8 +19,8 @@ _, imids, _ = chair.load_generated_captions(sentence_template %table1_tags[0][1]
 evaluator = chair.CHAIR(imids, args.annotation_path) 
 evaluator.get_annotations()
 
-print "\t\tCross Entropy\t\t\t\tSelf-Critical\t\t"
-print "Model\tSPICE\tMETEOR\tCIDEr\tCHAIRs\tCHAIRi\t|SPICE\tMETEOR\tCIDEr\tCHAIRs\tCHAIRi"
+print("\t\tCross Entropy\t\t\t\tSelf-Critical\t\t")
+print("Model\tSPICE\tMETEOR\tCIDEr\tCHAIRs\tCHAIRi\t|SPICE\tMETEOR\tCIDEr\tCHAIRs\tCHAIRi")
 
 for tag in table1_tags:
 
@@ -33,4 +33,4 @@ for tag in table1_tags:
         chair.save_hallucinated_words(sentence_template %tag[2], cap_dict)
     else:
         metric_string_sc = "-\t-\t-\t-\t-"
-    print "%s\t%s\t|%s" %(tag[0], metric_string_ce, metric_string_sc) 
+    print("%s\t%s\t|%s" %(tag[0], metric_string_ce, metric_string_sc)) 
