@@ -14,7 +14,7 @@ Additionally you will need MSCOCO annotations (both the instance segmentations a
 If you do not already have them, they can be downloaded [here](http://images.cocodataset.org/annotations/annotations_trainval2014.zip).
 You can see other python requirements in [requirements.txt](requirements.txt).
 
-**NOTE:** The download links in `setup.sh` are [no longer available](https://github.com/LisaAnne/Hallucination/issues/1), you need to download it from [Lisa's Google Drive](https://drive.google.com/drive/u/1/folders/1dnci1Kv6ez-hsFOqZt_gwiAv2FTAjDP4).
+**NOTE:** The download links in `setup.sh` are [no longer available](https://github.com/LisaAnne/Hallucination/issues/1), you need to download related files from [Lisa's Google Drive](https://drive.google.com/drive/u/1/folders/1dnci1Kv6ez-hsFOqZt_gwiAv2FTAjDP4).
 
 ---
 
