@@ -1,4 +1,4 @@
-# Eval Code for CHAIRs & CHAIRi Metrics in Image Captioning
+# Python3 Eval Code for CHAIRs & CHAIRi Metrics in Image Captioning
 
 This repository is a fork from [Lisa's Original Repo](https://github.com/LisaAnne/Hallucination), with the following main modifications:
 
