@@ -273,16 +273,42 @@ class CHAIR(object):
         return output 
 
 def load_generated_captions(cap_file):
-   #Read in captions        
-   caps = json.load(open(cap_file))
-   try:
-       metrics = caps['overall']
-       caps = list(caps['imgToEval'].values())
-       imids = set([cap['image_id'] for cap in caps])
-   except:
-       raise Exception("Expect caption file to consist of a dectionary with sentences correspdonding to the key 'imgToEval'")
+    #Read in captions        
+    caps = json.load(open(cap_file))
+    try:
+        # Lisa result file
+        metrics = caps['overall']
+        caps = list(caps['imgToEval'].values())
+        imids = set([cap['image_id'] for cap in caps])
+    except:
+        #    raise Exception("Expect caption file to consist of a dectionary with sentences correspdonding to the key 'imgToEval'")
+        def insert_fake_metrics(item):
+            item['CIDEr'] = -1.0,
+            item['Bleu_4'] = -1.0,
+            item['Bleu_3'] = -1.0,
+            item['Bleu_2'] = -1.0,
+            item['Bleu_1'] = -1.0,
+            item['ROUGE_L'] = -1.0,
+            item['METEOR'] = -1.0,
+            item['SPICE'] = -1.0
+            return item
 
-   return caps, imids, metrics
+        # Our result file
+        metrics = { # no_use
+            'CIDEr': -1.0,
+            'Bleu_4': -1.0,
+            'Bleu_3': -1.0,
+            'Bleu_2': -1.0,
+            'Bleu_1': -1.0,
+            'ROUGE_L': -1.0,
+            'METEOR': -1.0,
+            'SPICE': -1.0
+        }
+        # insert fake metrics
+        imids = set([cap['image_id'] for cap in caps])
+        caps = [insert_fake_metrics(x) for x in caps]
+        
+    return caps, imids, metrics
 
 def save_hallucinated_words(cap_file, cap_dict): 
     tag = cap_file.split('/')[-1] 
