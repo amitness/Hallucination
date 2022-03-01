@@ -123,6 +123,9 @@ class CHAIR(object):
     
         #toilet seat is not chair (sentences like "the seat of the toilet" will fire for "chair" if we do not include this line)
         if ('toilet' in words) & ('seat' in words): words = [word for word in words if word != 'seat']
+        
+        # Don't consider color word for computing CHAIR
+        if 'orange' in words: words = [word for word in words if word != 'orange']
     
         #get synonyms for all words in the caption
         idxs = [idxs[idx] for idx, word in enumerate(words) \
